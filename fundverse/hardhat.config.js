@@ -14,7 +14,7 @@ module.exports = {
   networks: {
     zksync_testnet: {
       url: "https://zksync2-testnet.zksync.dev",
-      ethNetwork: "goerli",
+      ethNetwork: "sepolia",  // Change ethNetwork to "sepolia"
       chainId: 280,
       zksync: true,
     },
@@ -33,15 +33,14 @@ module.exports = {
   },
   solidity: {
     version: "0.8.17",
-    defaultNetwork: 'sepolia',
-    networks:{
+    defaultNetwork: 'sepolia',  // Change defaultNetwork to 'sepolia'
+    networks: {
       hardhat: {},
-      sepolia: {
+      sepolia: {  // Add Sepolia network configuration
         url: 'https://rpc.ankr.com/eth_sepolia',
-        accounts: [`0x${process.env.PRIVATE_KEY}`]
+        accounts: [`0x${process.env.PRIVATE_KEY}`]  // Make sure you set your actual private key here
       }
     },
-
     settings: {
       optimizer: {
         enabled: true,
