@@ -8,7 +8,7 @@ contract crowdFunding {
         string desc;
         uint256 target;
         uint256 deadline;
-        uint256 amountCollected;
+        uint256 amountCollected;    //Contains the amount  collected
         string imageurl;    //Contains the image url
         address[] donators; //Array to keep track of donations 
         uint256[] donation; //Array to keep track of the amount of donation done
