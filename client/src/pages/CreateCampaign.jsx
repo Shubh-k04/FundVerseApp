@@ -8,7 +8,6 @@ import {business } from '../assets'
 const CreateCampaign = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-
   const [form, setForm] = useState({
     name: '',
     title: '',
@@ -25,7 +24,7 @@ const CreateCampaign = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    checkIfImage(form.image, async (exists) => {
+    const checkIfImage = (form.image, async (exists) => {
       if(exists) {
         setIsLoading(true)
         await createCampaign({ ...form, target: ethers.utils.parseUnits(form.target, 18)})
@@ -109,8 +108,13 @@ const CreateCampaign = () => {
         </div>
 
       {/* col item 3 */}
-      
-      <input type="file" title='' className="file-input file-input-bordered file-input-warning w-full max-w-xs" />
+      <FormField 
+            labelName="Campaign image *"
+            placeholder="Place image URL of your campaign"
+            inputType="url"
+            value={form.image}
+            handleChange={(e) => handleFormFieldChange('image', e)}
+      />
 
           <div className="flex justify-center items-center mt-[40px]">
           <button className="btn sm:btn-sm md:btn-md lg:btn-md bg-[#ED9121] btn-glass text-white rounded-[10px]"
